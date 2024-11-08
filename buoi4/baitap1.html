@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giai Phuong Trinh Bac 1</title>
+</head>
+<body>
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+       
+        label{
+            margin: 5px;
+        }
+        input{
+            margin: 5px;
+        }
+        button{
+            margin: 5px;
+        }
+        .child{
+            margin: 5px;
+        }
+    </style>
+   <div class="container">
+    <form id="linearEquation">
+       <div>
+        <label for="a">A: </label>
+        <input type="number" id="a" required placeholder="He so a">
+       </div>
+       <div>
+        <label for="b">B: </label>
+        <input type="number" id="b" required placeholder="He so b">  
+       </div>
+        <button type="submit">Solve</button>
+    </form>
+    <div class="child">
+        <Label for="result">result: </Label>
+        <span id="result"></span>
+    </div>
+   </div>
+    <script>
+        class LinearEquation {
+            constructor(a, b) {
+                this.a = a;
+                this.b = b;
+            }
+
+            solve() {
+                if (this.a === 0) {
+                    return (this.b === 0) ? 'Phuong trinh vo so nghiem' : 'Phuong trinh vo nghiem';
+                } else {
+                    return -this.b / this.a;
+                }
+            }
+        }
+
+        document.getElementById('linearEquation').addEventListener('submit', function(event){
+            event.preventDefault();
+            var a = parseFloat(document.getElementById('a').value);
+            var b = parseFloat(document.getElementById('b').value);
+            const equation = new LinearEquation(a, b);
+            const result = equation.solve();
+            console.log("Ket qua cua phuong trinh la " + result);
+            document.getElementById('result').textContent = result;
+        });
+    </script>
+</body>
+</html>

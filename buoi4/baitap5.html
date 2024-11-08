@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 320px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .input-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-container input {
+            width: calc(100% - 10px);
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #444;
+            color: white;
+        }
+
+        .input-container img {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        input::placeholder {
+            color: #999;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #555;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #777;
+        }
+
+        .input-container img#togglePassword {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <form id="loginform">
+            <h2>Login</h2>
+            <div class="input-container">
+                <input type="text" placeholder="Username" id="username">
+                <img src="https://img.icons8.com/?size=30&id=978&format=png&color=000000" alt="account">
+            </div>
+            <div class="input-container">
+                <input type="password" placeholder="Password" id="password">
+                <img src="https://img.icons8.com/?size=30&id=15454&format=png&color=000000" id="togglePassword" alt="toggle visibility" onclick="togglePasswordVisibility()">
+            </div>
+            <button type="submit">Sign In</button>
+        </form>
+    </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById("password");
+        const toggleIcon = document.getElementById("togglePassword");
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            toggleIcon.src = "https://img.icons8.com/?size=30&id=60022&format=png&color=000000"; 
+        } else {
+            passwordField.type = "password";
+            toggleIcon.src = "https://img.icons8.com/?size=30&id=15454&format=png&color=000000"; 
+        }
+        }
+
+        document.getElementById("loginform").addEventListener('submit', function(event) {
+            event.preventDefault();
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (username === "admin" && password === "admin") {
+                alert("Login successful!");
+            } else {
+                alert("Incorrect username or password!");
+            }
+            this.reset();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký du lịch</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <h1>ĐĂNG KÝ DU LỊCH</h1>
+
+    <form id="registrationForm" action="#">
+        <table border="1">
+            <tr>
+                <td>Họ tên:</td>
+                <td><input type="text" id="name" name="name" placeholder="Nhập họ tên"></td>
+            </tr>
+            <tr>
+                <td>Địa chỉ:</td>
+                <td><textarea id="address" name="address" rows="3" placeholder="Nhập địa chỉ"></textarea></td>
+            </tr>
+            <tr>
+                <td>Điện thoại:</td>
+                <td><input type="text" id="phone" name="phone" placeholder="Nhập số điện thoại"></td>
+            </tr>
+            <tr>
+                <td>Khách Việt Nam:</td>
+                <td class="checkbox-group">
+                    <input type="checkbox" id="vietnamese" name="vietnamese"> 
+                </td>
+            </tr>
+            <tr>
+                <td>Chọn tour:</td>
+                <td>
+                    <select id="tour" name="tour">
+                        <option value="phu-quoc-con-dao">Phú Quốc - Côn Đảo</option>
+                        <option value="ha-long">Hạ Long</option>
+                        <option value="sapa">Sapa</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Phương tiện:</td>
+                <td class="radio-group">
+                    <label><input type="radio" id="plane" name="transport" value="plane"> Máy bay</label>
+                    <label><input type="radio" id="car" name="transport" value="car"> Xe du lịch</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Số lượng đoàn khách:</td>
+                <td>
+                    Người lớn <input type="text" id="adults" name="adults" placeholder="7" style="width: 50px;"> 
+                    Trẻ em <input type="text" id="children" name="children" placeholder="2" style="width: 50px;">
+                </td>
+            </tr>
+            <tr>
+                <td>Ghi chú thêm:</td>
+                <td><textarea id="notes" name="notes" rows="4" placeholder="Nhập ghi chú thêm"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="center-cell">
+                    <button type="submit" class="btn">Đồng ý</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div id="successMessage" class="success-message" style="display: none;">
+        Bạn đã đăng ký thành công!!!
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

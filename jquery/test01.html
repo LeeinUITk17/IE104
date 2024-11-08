@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+    <style>
+        #warn {
+            display: none;
+            color: red;
+        }
+        .child{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        .kid{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="none">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <p id="warn">Warning</p>
+            <button type="submit">Submit</button>
+        </form>
+        <div class="child">
+           <div class="kid">
+               <span id="intro">Gioi Thieu</span>
+           </div>
+           <div class="kid">
+                <span id="announce">Thong Bao</span>
+           </div>
+           <select class="kid">
+            <option value="none">Quy Dinh Dao Tao</option>
+            <option value="Dai hoc chinh quy">Dai hoc chinh quy</option>
+            <option value="Dao tao thac si">Dao tao thac si</option>
+            <option value="Dao tao tien si">Dao tao tien si</option>
+            <option value="Dao tao tu xa">Dao tao tu xa</option>
+        </select>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $("form").submit(function(event){
+                event.preventDefault();
+                var name = $("#name").val();
+                $.confirm({
+                    title: 'Confirmation',
+                    content: 'Are you sure you want to proceed?',
+                    buttons: {
+                        confirm: {
+                            text: 'OK',
+                            action: function () {
+                                document.getElementById('name').value = '';
+                                $('#warn').hide();
+                                $('#name').css({'border':'1px solid #ccc'});
+                            }
+                        },
+                        cancel: {
+                            text: 'Cancel',
+                            action: function qq () {
+                                $('#name').css({'border':'2px solid red'});
+                                    $('#warn').show();
+                                setTimeout(() => {
+                                    $('#warn').hide();
+                                    $('#name').css({'border':'1px solid #ccc'});
+                                }, 1000);
+                            }
+                        }
+                    }
+                });
+            });
+        });
+        $(document).ready(function(){
+            $('#intro').click(function(){
+                $('#intro').css({'background-color':'yellow'})
+                setTimeout(() => {
+                    $('#intro').css({'background-color':'white'})
+                }, 1000);
+            });
+            $('#announce').click(function(){
+                $('#announce').css({'background-color':'yellow'})
+                setTimeout(() => {
+                    $('#announce').css({'background-color':'white'})
+                }, 1000);
+            });
+            $('select').change(function(){
+                var selected = $(this).children("option:selected").val();
+                if(selected!=='none'){
+                    alert(selected);
+                }     
+            });
+        });
+    </script>
+</body>
+</html>

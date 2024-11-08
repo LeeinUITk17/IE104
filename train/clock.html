@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 3rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            height: auto;
+            background-color: bisque;
+            padding: 20px;
+        }
+        .hour {
+            align-self: center;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+        #clock {
+            font-weight: bold;
+        }
+        .Log {
+            margin-top: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+        #signin {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .analog-clock {
+            display: none;
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 10px solid black;
+            border-radius: 50%;
+        }
+        .hand {
+            position: absolute;
+            width: 50%;
+            height: 6px;
+            background: black;
+            top: 50%;
+            transform-origin: 100%;
+            transform: rotate(90deg);
+        }
+        .analog-clock:hover {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hour" id="clock"></div>
+        <div class="analog-clock" id="analog-clock">
+            <div class="hand" id="hour-hand"></div>
+            <div class="hand" id="minute-hand"></div>
+            <div class="hand" id="second-hand"></div>
+        </div>
+        <div>
+            <label for="timezone">Select Timezone:</label>
+            <select id="timezone">
+                <option value="Asia/Bangkok">Hanoi</option>
+                <option value="America/New_York">New York</option>
+                <option value="Europe/London">London</option>
+                <option value="Asia/Tokyo">Tokyo</option>
+            </select>
+        </div>
+        <button id="toggle-clock">Switch to Analog Clock</button>
+        <div class="Log">
+            <form id="signin">
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        let isDigital = true;
+
+        function updateClock() {
+            const timezone = document.getElementById('timezone').value;
+            const now = new Date(new Date().toLocaleString("en-US", { timeZone: timezone }));
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            const session = hours >= 12 ? 'PM' : 'AM';
+
+            if (isDigital) {
+                const time = `${hours}:${minutes}:${seconds} ${session}`;
+                document.getElementById('clock').textContent = time;
+            } else {
+                const hourHand = document.getElementById('hour-hand');
+                const minuteHand = document.getElementById('minute-hand');
+                const secondHand = document.getElementById('second-hand');
+
+                const hourDegrees = ((hours % 12) / 12) * 360 + (minutes / 60) * 30;
+                const minuteDegrees = (minutes / 60) * 360;
+                const secondDegrees = (seconds / 60) * 360;
+
+                hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+                minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
+                secondHand.style.transform = `rotate(${secondDegrees}deg)`;
+            }
+        }
+
+        document.getElementById('toggle-clock').addEventListener('click', function() {
+            isDigital = !isDigital;
+            document.getElementById('clock').style.display = isDigital ? 'block' : 'none';
+            document.getElementById('analog-clock').style.display = isDigital ? 'none' : 'block';
+            this.textContent = isDigital ? 'Switch to Analog Clock' : 'Switch to Digital Clock';
+        });
+
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        document.getElementById('signin').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            if (username === 'admin' && password === 'admin') {
+                alert('Sign in successfully');
+            } else {
+                alert('Sign in failed');
+            }
+        });
+    </script>
+</body>
+</html>

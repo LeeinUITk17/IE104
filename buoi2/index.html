@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            background-color: antiquewhite;
+            overflow: hidden; /* Prevent scrollbars */
+        }
+        .container {
+            align-items: center;
+            background-color: yellow;
+            width: 50%;
+            height: auto;
+            padding: 10px;
+            border: 30px solid red;
+            justify-items: center;
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+            flex-direction: column;
+        }
+        #K:hover {
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            font-weight: 700;
+            width: 100px;
+            height: auto;
+            border-radius: 10px;
+        }
+        .container:hover {
+            background-color: blue;
+            color: white;
+        }
+        textarea::placeholder {
+            color: red;
+            font-weight: 700;
+            padding-top: 5px;
+            padding-left: 10px;
+        }
+        .child {
+            background-color: whitesmoke;
+            height: 80px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .kid {
+            justify-items: center;
+            display: flex;
+            justify-content: space-around;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+            flex-direction: row;
+        }
+        .nyan-cat {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: url('https://sweetalert2.github.io/images/nyan-cat.gif') no-repeat;
+            background-size: contain;
+            animation: moveNyanCat 15s linear infinite;
+        }
+        .shark-cat {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: url('https://sweetalert2.github.io/images/nyan-cat.gif') no-repeat;
+            background-size: contain;
+            animation: moveNyanCat 20s linear infinite;
+        }
+        @keyframes moveNyanCat {
+            0% {
+                top: 0;
+                left: 0;
+                -webkit-transform: rotate3d(0, 0, 1, 0deg);
+                transform: rotate3d(0, 0, 1, 0deg);
+            }
+            25% {
+                top: 0;
+                left: calc(100% - 100px);
+                -webkit-transform: rotate3d(0, 0, 1, 90deg);
+                transform: rotate3d(0, 0, 1, 90deg);
+            }
+            50% {
+                top: calc(100% - 100px);
+                left: calc(100% - 100px);
+                -webkit-transform: rotate3d(0, 0, 1, 180deg);
+    transform: rotate3d(0, 0, 1, 180deg);
+            }
+            75% {
+                top: calc(100% - 100px);
+                left: 0;
+                -webkit-transform: rotate3d(0, 0, 1, 270deg);
+                transform: rotate3d(0, 0, 1, 270deg);
+            }
+            100% {
+                top: 0;
+                left: 0;
+                -webkit-transform: rotate3d(0, 0, 1, 360deg);
+                transform: rotate3d(0, 0, 1, 360deg);
+            }
+        }
+        .block_kid {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 20px;
+            color: white;
+            justify-content: space-between;
+        }
+        .blockCat{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            border-radius: 10px;
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 20px;
+            color: white;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="kid">
+            <textarea style="width: 90%;" name="write" id="text" placeholder="write something"></textarea>
+            <button id="K" onmouseover="changePlaceholder()" onmouseout="revertPlaceholder()" onclick="handleClick(event)">Click me</button>
+        </div>
+        <div class="child"></div>
+    </div>
+    <div class="nyan-cat"></div>
+    <div class="shark-cat"></div>
+    <div class="block_kid"></div>
+    <div class="block_kid"></div>
+    <div class="block_kid"></div>
+
+    <div class="blockCat"></div>
+    <div class="blockCat"></div>
+    <div class="blockCat"></div>
+    <script>
+        function changePlaceholder() {
+            document.getElementById('text').placeholder = "Destroy me!!!!!!!!!!!!!";
+        }
+
+        function revertPlaceholder() {
+            document.getElementById('text').placeholder = "write something";
+        }
+
+        function handleClick(event) {
+            Swal.fire({
+                title: "You click me!, ( •̀ .̫ •́ )✧",
+                width: 600,
+                padding: "3em",
+                color: "#716add",
+                background: "#fff",
+                backdrop: `
+                    rgba(0,0,123,0.4)
+                    url("https://sweetalert2.github.io/images/nyan-cat.gif")
+                    left top
+                    no-repeat
+                `
+            });
+        }
+    </script>
+</body>
+</html>

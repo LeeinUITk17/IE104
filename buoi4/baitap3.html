@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Hệ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .inf {
+            width: 48%;
+            background-color: gray;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .mailform {
+            width: 48%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .inf h2, .mailform h2 {
+            margin-bottom: 20px;
+        }
+        .inf div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .inf img {
+            margin-right: 10px;
+        }
+        .mailform form {
+            display: flex;
+            flex-direction: column;
+        }
+        .mailform input, .mailform textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .mailform textarea {
+            resize: none;
+            height: 120px;
+        }
+        .mailform button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .mailform button img {
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        .mailform button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="inf">
+            <h2>Thông tin liên hệ</h2>
+            <div>
+                <img src="https://img.icons8.com/?size=50&id=OBmVbH2qOGwK&format=png&color=000000" alt="Location Icon">
+                <p>Kp 6, P Linh Trung, Tp Thủ Đức, TpHCM</p>
+            </div>
+            <div>
+                <img src="https://img.icons8.com/?size=50&id=6BBCqlzE4iKd&format=png&color=000000" alt="Email Icon">
+                <p>lienhe@gmail.com</p>
+            </div>
+            <div>
+                <img src="https://img.icons8.com/?size=50&id=124195&format=png&color=000000" alt="Phone Icon">
+                <p>0909 123 456</p>
+            </div>
+        </div>
+        <div class="mailform">
+            <h2>Hãy liên lạc với chúng tôi bất cứ khi nào</h2>
+            <form id="noidungmail">
+                <input type="text" id="ten" placeholder="Họ và tên" required>
+                <input type="email" id="mailaddress" placeholder="Địa chỉ email" required>
+                <input type="text" id="titlebaiviet" placeholder="Tiêu đề bài viết" required>
+                <textarea name="noidung" id="noidung" placeholder="Nội dung cần gửi" required></textarea>
+                <button type="submit">Gửi tin nhắn
+                    <img src="https://img.icons8.com/?size=50&id=2837&format=png&color=000000" alt="Send Icon">
+                </button>
+            </form>
+        </div>
+    </div>
+    <script>
+        class guimail{
+            constructor(ten, mailaddress, titlebaiviet, noidung){
+                this.ten = ten;
+                this.mailaddress = mailaddress;
+                this.titlebaiviet = titlebaiviet;
+                this.noidung = noidung;
+            }
+            annouce(){
+                console.log("Tin nhắn đã gửi");
+                console.log("Tên: " + this.ten);
+                console.log("Địa chỉ email: " + this.mailaddress);
+                console.log("Tiêu đề bài viết: " + this.titlebaiviet);
+                console.log("Nội dung: " + this.noidung);
+            }
+        }
+        document.getElementById("noidungmail").addEventListener('submit', function(event){
+            event.preventDefault();
+            var ten = document.getElementById("ten").value;
+            var mailaddress = document.getElementById("mailaddress").value;
+            var titlebaiviet = document.getElementById("titlebaiviet").value;
+            var noidung = document.getElementById("noidung").value;
+            const noidungmail = new guimail(ten, mailaddress, titlebaiviet, noidung);
+            noidungmail.annouce();
+            this.reset();
+        })
+    </script>
+</body>
+</html>

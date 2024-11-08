@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Góp Ý</title>
+</head>
+<body>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7f7f7;
+}
+
+.form-container {
+    width: 500px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 48%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-group textarea {
+    width: 100%;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+    <div class="form-container">
+        <form id="danhgia">
+            <div class="form-group">
+                <input type="text" id="ten" placeholder="Họ và tên" required>
+                <input type="text" id="mathe" placeholder="Mã thẻ" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="phone" placeholder="Số điện thoại" required>
+                <input type="email" id="mail" placeholder="E-mail" required>
+            </div>
+            <div class="form-group">
+                <select id="loaikhach" required>
+                    <option value="" disabled selected>Chọn loại khách hàng</option>
+                    <option value="loai1">Loại 1</option>
+                    <option value="loai2">Loại 2</option>
+                </select>
+                <input id="mahoadon" type="text" placeholder="Mã hóa đơn" required>
+            </div>
+            <div class="form-group">
+                <textarea id="chitiet" placeholder="Nhập chi tiết mô tả" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">
+                <img src="https://img.icons8.com/?size=20&id=eAI6V8tuK5nR&format=png&color=000000" alt="Send Icon" style="vertical-align: middle; margin-right: 8px;">
+                GỬI GÓP Ý
+            </button></button>
+        </form>
+    </div>
+    <script>
+      class formDanhGia {
+        constructor(ten, mathe, phone, mail, loaikhach, mahoadon, chitiet) {
+            this.ten = ten;
+            this.mathe = mathe;
+            this.phone = phone;
+            this.mail = mail;
+            this.loaikhach = loaikhach;
+            this.mahoadon = mahoadon;
+            this.chitiet = chitiet;
+        }
+        announce(){
+            alert(
+                "Tên: " + this.ten + "\n" +
+                "Mã thẻ: " + this.mathe + "\n" +
+                "Số điện thoại: " + this.phone + "\n" +
+                "E-mail: " + this.mail + "\n" +
+                "Loại khách hàng: " + this.loaikhach + "\n" +
+                "Mã hóa đơn: " + this.mahoadon + "\n" +
+                "Chi tiết: " + this.chitiet + "\n" +
+                "Gửi thành công!"
+            )
+        }
+      }
+
+        document.getElementById("danhgia").addEventListener('submit', function(event){
+            event.preventDefault();
+            var ten=document.getElementById("ten").value;
+            var mathe=document.getElementById("mathe").value;
+            var phone=document.getElementById("phone").value;
+            var mail=document.getElementById("mail").value;
+            var loaikhach=document.getElementById("loaikhach").value;
+            var mahoadon=document.getElementById("mahoadon").value;
+            var chitiet=document.getElementById("chitiet").value;
+            const form = new formDanhGia(ten, mathe, phone, mail, loaikhach, mahoadon, chitiet);
+            form.announce();
+
+            this.reset(); 
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4caf50, #008080);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .bmi-calculator {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        .bmi-calculator h2 {
+            background-color: #3f51b5;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .bmi-calculator label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .bmi-calculator input, .bmi-calculator select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .bmi-calculator button {
+            width: 100%;
+            background-color: #00bcd4;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .bmi-calculator button:hover {
+            background-color: #0097a7;
+        }
+
+        .bmi-result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .bmi-result span {
+            display: block;
+            font-size: 24px;
+            color: #303f9f;
+        }
+
+        .bmi-warning {
+            color: red;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="bmi-calculator">
+    <h2>TÍNH CHỈ SỐ BMI</h2>
+    <label for="weight">Nhập cân nặng?</label>
+    <input type="number" id="weight" placeholder="Nhập cân nặng (kg)" />
+
+    <label for="height">Nhập chiều cao?</label>
+    <input type="number" step="0.01" id="height" placeholder="Nhập chiều cao (m)" />
+
+    <label for="age-group">Chọn loại tuổi?</label>
+    <select id="age-group">
+        <option value="adult">Già, lớn tuổi</option>
+        <option value="young">Trẻ, thanh niên</option>
+    </select>
+
+    <button onclick="calculateBMI()">TÍNH BMI</button>
+
+    <div class="bmi-result" id="result"></div>
+    <div class="bmi-warning" id="warning"></div>
+</div>
+
+<script>
+    class BMI_result {
+        constructor(bmi, warning, ageGroup) {
+            this.bmi = bmi;
+            this.warning = warning;
+            this.ageGroup = ageGroup;
+        }
+
+        static calculateBMI(weight, height, ageGroup) {
+            if (weight && height) {
+                let bmi = (weight / (height * height)).toFixed(2);
+                document.getElementById("result").innerHTML = `<span>${bmi}</span>`;
+                let warningMessage = "";
+
+                if (bmi >= 30) {
+                    warningMessage = "BÉO PHÌ ĐỘ 3<br>Hạn chế ăn mỡ động vật.";
+                    document.getElementById("result").style.color = "red";
+                } else if (bmi >= 25) {
+                    warningMessage = "Thừa cân, cần kiểm soát chế độ ăn.";
+                    document.getElementById("result").style.color = "orange";
+                } else if (bmi >= 18.5) {
+                    warningMessage = "Cân nặng bình thường.";
+                    document.getElementById("result").style.color = "green";
+                } else {
+                    warningMessage = "Thiếu cân, cần bổ sung dinh dưỡng.";
+                    document.getElementById("result").style.color = "blue";
+                }
+                document.getElementById("warning").innerHTML = warningMessage;
+            } else {
+                document.getElementById("result").innerHTML = "";
+                document.getElementById("warning").innerHTML = "Vui lòng nhập đầy đủ thông tin.";
+            }
+        }
+    }
+
+    function calculateBMI() {
+        let weight = parseFloat(document.getElementById("weight").value);
+        let height = parseFloat(document.getElementById("height").value);
+        let ageGroup = document.getElementById("age-group").value
+        BMI_result.calculateBMI(weight, height, ageGroup);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4caf50, #008080);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+            transition: transform 0.2s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .input_container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input_container label {
+            display: block;
+            text-align: left;
+            font-weight: bold;
+            color: #444;
+            margin-bottom: 5px;
+        }
+
+        .input_container input {
+            width: 100%;
+            padding: 10px;
+            padding-right: 40px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .input_container input:focus {
+            border-color: #4caf50;
+            outline: none;
+        }
+
+        .input_container img {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-10%);
+            cursor: pointer;
+        }
+
+        .input_container input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .input_container input[type="submit"]:hover {
+            background-color: #43a047;
+        }
+
+        .ortherOption {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .ortherOption h2 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .ortherOption button {
+            background-color: #008080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .ortherOption button:hover {
+            background-color: #006666;
+        }
+
+        .ortherOption button img {
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+    </style>
+
+    <div class="container">
+        <form id="loginform">
+            <h1>Login</h1>
+            <p>Login here using your username and password</p>
+            <div class="input_container">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter your username" required>
+                <img src="https://img.icons8.com/?size=20&id=978&format=png&color=000000" alt="account">
+            </div>
+            <div class="input_container">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+                <img src="https://img.icons8.com/?size=20&id=15454&format=png&color=000000" id="togglePassword" alt="toggle visibility" onclick="togglePasswordVisibility()">
+            </div>
+            <div class="input_container">
+                <input type="submit" value="Login">
+            </div>
+            <div class="ortherOption">
+                <h2>Forgot Password?</h2>
+                <button type="button" onclick="SignUp()">Sign Up <img src="https://img.icons8.com/?size=20&id=111488&format=png&color=000000" alt="account"></button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById("password");
+            const toggleIcon = document.getElementById("togglePassword");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleIcon.src = "https://img.icons8.com/?size=20&id=60022&format=png&color=000000"; 
+            } else {
+                passwordField.type = "password";
+                toggleIcon.src = "https://img.icons8.com/?size=20&id=15454&format=png&color=000000"; 
+            }
+        }
+
+        document.getElementById("loginform").addEventListener('submit', function(event) {
+            event.preventDefault();
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (username === "admin" && password === "admin") {
+                alert("Login successful!");
+            } else {
+                alert("Incorrect username or password!");
+            }
+            this.reset();
+        });
+
+        function SignUp(){
+            alert("Please check your email to verify your account!");
+        }
+    </script>
+</body>
+</html>

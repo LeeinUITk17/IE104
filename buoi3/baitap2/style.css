@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.form-container {
+    width: 450px;
+    padding: 30px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    background-image: url('../assets/khuyen-mai.png');
+    background-image: url('../assets/khuyen-mai.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    color: #4a90e2;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group select:focus {
+    border-color: #4a90e2;
+    outline: none;
+}
+
+.form-group .radio-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.K-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.form-group input[type="radio"] {
+    margin-bottom: 10px;
+}
+
+.btn {
+    background-color: #4a90e2;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: #357ab9;
+    transform: translateY(-2px);
+}
+
+.success-message {
+    color: #ff4081;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.form-group select[multiple] {
+    height: auto;
+    padding: 8px;
+}
+@media (max-width: 600px) {
+    .form-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px 0;
+    }
+}

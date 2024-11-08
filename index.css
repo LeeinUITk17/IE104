@@ -1,0 +1,68 @@
+/* body{
+    background-color: whitesmoke;
+    
+}
+h1{
+    color: blue;
+    text-align: center;
+    animation: colorchange 5s infinite;
+    animation-timing-function: linear;
+   
+}
+
+h1:hover{
+    animation-play-state: paused;
+    animation-name: colorchange;
+    animation-duration: 10s; 
+}
+
+@keyframes colorchange{
+    0% {color: blue;}
+    25% {color: green;}
+    50% {color: yellow;}
+    75% {color: orange;}
+    100% {color: red;}
+}
+
+@keyframes sizechange{
+    0% {font-size: small;}
+    25% {font-size: medium;}
+    50% {font-size: large;}
+    75% {font-size: x-large;}
+    100% {font-size: xx-large;}
+}
+
+.duma{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: center;
+    margin-top: 10%;
+    background-color: whitesmoke;
+    border-color: blue;
+    border-style: solid;
+    border: 10 10 10 10;
+}
+
+.duma .non {
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-radius: 5%;
+    background-color: whitesmoke;
+    color: blue;
+}
+
+.duma .non:hover{
+    color: black;
+}
+
+
+button:hover{
+    background-color: rgb(134, 134, 194);
+    font-size:medium
+}
+
+ */
+
